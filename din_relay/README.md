@@ -1,14 +1,17 @@
 DIN relay module
 
 Microcontroller: ATtiny2313
+
 External connections:
  * PD5 -> relay control
  * PD3 -> activity led
  * PD3 -> relay on/off LED
 
 How it works ?
+
 ATtiny is configured to receive commands over UART, baud 19200.
-Frame is 8-byte long, with CRC-8 in the last byte.
+
+Command frame is 8-byte long, with CRC-8 in the last byte.
  * CMD[0] -> address, should be 0x10
  * CMD[1] -> command: 0 -> off, 1 -> on, 2 -> on with timeout
  * CMD[2], CMD[3] -> determines timeout value in seconds (big endian)
